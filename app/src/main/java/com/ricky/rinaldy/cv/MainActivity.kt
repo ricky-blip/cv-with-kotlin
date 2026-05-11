@@ -31,17 +31,16 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AppNavigation() {
-    // Kita tidak pakai state showSplash lagi, karena ini akan jadi halaman utama
     val context = LocalContext.current
 
     SplashScreen(
-        onViewCvClick = {
-            // Nanti diganti: navController.navigate("cv")
-            Toast.makeText(context, "Menuju Halaman CV...", Toast.LENGTH_SHORT).show()
+        onViewExperienceClick = {
+            // Nanti logika navigasi ke halaman CV/Experience
+            Toast.makeText(context, "Buka Halaman Experience", Toast.LENGTH_SHORT).show()
         },
-        onExploreWorkClick = {
-            // Nanti diganti: navController.navigate("work")
-            Toast.makeText(context, "Mengeksplorasi Portfolio...", Toast.LENGTH_SHORT).show()
+        onViewOverviewClick = {
+            // Nanti logika navigasi ke halaman Overview/Projects
+            Toast.makeText(context, "Buka Halaman Overview", Toast.LENGTH_SHORT).show()
         }
     )
 }
