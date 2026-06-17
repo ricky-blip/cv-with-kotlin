@@ -1,4 +1,4 @@
-package com.ricky.rinaldy.cv.ui
+package com.ricky.rinaldy.cv.features.splash
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -73,7 +73,7 @@ fun SplashScreen(
 
             // 2. Subtitle
             Text(
-                text = "FLUTTER DEVELOPER & BUSINESS\nWORKFLOW SPECIALIST",
+                text = "MOBILE ENGINEER",
                 fontSize = 10.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = ColorTeal,

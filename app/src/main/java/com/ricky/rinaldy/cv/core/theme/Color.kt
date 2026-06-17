@@ -1,4 +1,4 @@
-package com.ricky.rinaldy.cv.ui.theme
+package com.ricky.rinaldy.cv.core.theme
 
 import androidx.compose.ui.graphics.Color
 
