@@ -268,23 +268,19 @@ fun ContactHeader() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(
-                painter = painterResource(id = R.drawable.pas_foto),
-                contentDescription = "Profile Picture",
-                modifier = Modifier
-                    .size(40.dp)
-                    .clip(CircleShape)
-                    .background(Color.Gray),
-                contentScale = ContentScale.Crop
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-            Text(text = "Ricky Rinaldy", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = ColorNavy)
-        }
-        Icon(Icons.Default.MoreVert, contentDescription = null, tint = ColorNavy)
+        Image(
+            painter = painterResource(id = R.drawable.pas_foto),
+            contentDescription = "Profile Picture",
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
+                .background(Color.Gray),
+            contentScale = ContentScale.Crop
+        )
+        Spacer(modifier = Modifier.width(12.dp))
+        Text(text = "Ricky Rinaldy", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = ColorNavy)
     }
 }
 
