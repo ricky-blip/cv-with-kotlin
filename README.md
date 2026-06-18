@@ -7,7 +7,6 @@ Personal portfolio Android application built with Kotlin and Jetpack Compose.
 - Welcome page
 - Profile
 - Experience
-- Certifications
 - Contact
 
 ## Tech Stack
