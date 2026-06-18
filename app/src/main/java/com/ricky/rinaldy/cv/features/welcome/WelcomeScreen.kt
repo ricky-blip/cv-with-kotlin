@@ -1,10 +1,10 @@
-package com.ricky.rinaldy.cv.features.splash
+package com.ricky.rinaldy.cv.features.welcome
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,11 +13,9 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowForward
-import androidx.compose.material3.Icon
 
 // Warna Tema
 private val ColorNavy = Color(0xFF10172A)
@@ -25,7 +23,7 @@ private val ColorTeal = Color(0xFF3B82F6) // Biru muda
 private val ColorTextGrey = Color(0xFF64748B)
 
 @Composable
-fun SplashScreen(
+fun WelcomeScreen(
     onViewExperienceClick: () -> Unit,
     onViewOverviewClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -78,7 +76,7 @@ fun SplashScreen(
                 fontWeight = FontWeight.SemiBold,
                 color = ColorTeal,
                 letterSpacing = 1.5.sp,
-                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                textAlign = TextAlign.Center,
                 lineHeight = 16.sp
             )
 
@@ -113,7 +111,7 @@ fun SplashScreen(
                 fontSize = 14.sp,
                 color = ColorTextGrey,
                 lineHeight = 22.sp,
-                textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                textAlign = TextAlign.Center
             )
 
             Spacer(modifier = Modifier.height(48.dp))

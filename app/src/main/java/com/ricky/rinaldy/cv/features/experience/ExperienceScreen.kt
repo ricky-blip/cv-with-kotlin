@@ -1,5 +1,6 @@
 package com.ricky.rinaldy.cv.features.experience
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -17,14 +18,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ricky.rinaldy.cv.R
 
 private val ColorNavy = Color(0xFF10172A)
 private val ColorTeal = Color(0xFF0D9488)
 private val ColorBg = Color(0xFFF8FAFC)
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ExperienceScreen() {
     Column(
@@ -67,7 +72,7 @@ fun ExperienceScreen() {
                     ProjectDetail("Mobile ERP Application", "Seamless REST API integration for operational workflows."),
                     ProjectDetail("Print Automation", "Printer integration handling receipts, and label using ESC/POS & Zebra Print Lib.")
                 ),
-                techStack = listOf("FLUTTER", "DART", "FIREBASE", "ML KIT", "REST API", "DESIGN PATTERNS")
+                techStack = listOf("FLUTTER", "DART", "FIREBASE", "ML KIT", "REST API","TENSORFLOW", "DESIGN PATTERNS")
             )
 
             Spacer(modifier = Modifier.height(48.dp))
@@ -78,9 +83,9 @@ fun ExperienceScreen() {
                 role = "PT. Evo Manufacturing Indonesia",
                 company = "",
                 subRoles = listOf(
-                    SubRole("Mobile Application Developer", "May 2019 — Present (Part time / Freelance)"),
+                    SubRole("Mobile Application Developer", "May 2019 — Present (Freelance)"),
                     SubRole("Software Developer", "Feb 2017 — Apr 2019 (Palembang, Indonesia)"),
-                    SubRole("Flutter Developer", "Sep 2021 — Sep 2022 (Remote / Part time)")
+                    SubRole("Flutter Developer", "Sep 2021 — Sep 2022 (Part time)")
                 ),
                 summary = "Focused on mobile and desktop apps for internal business systems.",
                 projectsTitle = "Achievements & Responsibilities:",
@@ -95,23 +100,23 @@ fun ExperienceScreen() {
 
             Spacer(modifier = Modifier.height(48.dp))
 
-            // --- Skyllar ---
+            // --- Skylar ---
             DetailedExperienceItem(
                 period = "OCT 2015 — SEP 2017",
                 role = "Website Builder | IT Support",
-                company = "Skyllar Digital Creative",
+                company = "Skylar Digital Creative",
                 location = "Palembang, Indonesia",
                 summary = "Team leader and Content Creator for Amazon affiliate marketing. Handled IT Support, Internet Research, and website building using Joomla, Hugo, and WP themes.",
-                techStack = listOf("JOOMLA", "WP", "AFFILIATE", "HUGO", "IT SUPPORT")
+                techStack = listOf("JOOMLA", "WP", "AMAZON AFFILIATE", "HUGO", "Vultr", "VNC Viewer", "IT SUPPORT")
             )
 
             Spacer(modifier = Modifier.height(48.dp))
 
-            // --- Tridinda ---
+            // --- Trakindo ---
             DetailedExperienceItem(
                 period = "OCT 2015",
                 role = "Backup Engineer | IT Support",
-                company = "PT. Tridinda Utama",
+                company = "PT Trakindo Utama (Trakindo)",
                 location = "Palembang, Indonesia",
                 summary = "Managed network maintenance and client visiting services. Utilized MikroTik and Microsoft Outlook for system support and communication.",
                 techStack = emptyList()
@@ -127,27 +132,55 @@ fun ExperienceScreen() {
             
             EducationItem(
                 major = "Computer Science",
-                school = "STMIK Palembang",
-                period = "2014 — 2018",
-                location = "Palembang, Indonesia"
+                school = "Politeknik Sekayu",
+                period = "2015 — 2018",
+                location = "Musi Banyuasin, Indonesia"
             )
 
             Spacer(modifier = Modifier.height(48.dp))
 
-            // --- ACCREDITATION ---
-            Text(text = "Professional Accreditation", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = ColorNavy)
+            // ---------- PROFESSIONAL ACCREDITATION ----------
+
+            Text(
+                text = "Professional Accreditation",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = ColorNavy
+            )
+
             Spacer(modifier = Modifier.height(24.dp))
-            
-            Row(modifier = Modifier.fillMaxWidth()) {
-                AccreditationItem(Icons.Default.Adjust, "Firebase", Modifier.weight(1f), isDark = false)
-                Spacer(modifier = Modifier.width(12.dp))
-                AccreditationItem(Icons.Default.Javascript, "Back-end\nJavascript\nBootcamp", Modifier.weight(1f), isDark = true)
+
+            FlowRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                maxItemsInEachRow = 2
+            ) {
+                AccreditationItem(
+                    icon = Icons.Default.Code,
+                    title = "Backend Javascript",
+                    subtitle = "Bootcamp",
+                    isDark = true
+                )
+
+                AccreditationItem(
+                    icon = Icons.Default.Storage,
+                    title = "Spring Boot",
+                    subtitle = "Backend Engineering",
+                    isDark = false
+                )
+
+                AccreditationItem(
+                    icon = Icons.Default.Cloud,
+                    title = "IT Essentials",
+                    subtitle = "Cisco Networking Academy",
+                    isDark = false
+                )
+
+
             }
-            Spacer(modifier = Modifier.height(12.dp))
-            Row(modifier = Modifier.fillMaxWidth()) {
-                AccreditationItem(Icons.Default.Terminal, "Spring Boot\nBackend\nEngineering\nBootcamp", Modifier.weight(0.5f), isDark = false)
-                Spacer(modifier = Modifier.weight(0.5f))
-            }
+
+            Spacer(modifier = Modifier.height(64.dp))
             
             Spacer(modifier = Modifier.height(64.dp))
         }
@@ -164,11 +197,14 @@ fun ExperienceHeader() {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Box(
+            Image(
+                painter = painterResource(id = R.drawable.pas_foto),
+                contentDescription = "Profile Picture",
                 modifier = Modifier
                     .size(40.dp)
                     .clip(CircleShape)
-                    .background(Color.Gray)
+                    .background(Color.Gray),
+                contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.width(12.dp))
             Text(text = "Ricky Rinaldy", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = ColorNavy)
@@ -313,31 +349,109 @@ fun EducationItem(major: String, school: String, period: String, location: Strin
 }
 
 @Composable
-fun AccreditationItem(icon: ImageVector, title: String, modifier: Modifier = Modifier, isDark: Boolean) {
+fun AccreditationItem(
+    icon: ImageVector,
+    title: String,
+    subtitle: String,
+    isDark: Boolean
+) {
+
+    val background = if (isDark) ColorNavy else Color.White
+
+    val textColor = if (isDark) Color.White else ColorNavy
+
     Card(
-        colors = CardDefaults.cardColors(containerColor = if (isDark) ColorNavy else Color.White),
-        shape = RoundedCornerShape(12.dp),
-        modifier = modifier.height(130.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+        modifier = Modifier
+            .width(170.dp)
+            .aspectRatio(1.2f),
+
+        shape = RoundedCornerShape(20.dp),
+
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 3.dp
+        ),
+
+        colors = CardDefaults.cardColors(
+            containerColor = background
+        )
     ) {
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
+                .padding(18.dp),
+
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Icon(
-                icon,
-                contentDescription = null,
-                tint = if (isDark) Color(0xFF38BDF8) else ColorTeal,
-                modifier = Modifier.size(24.dp)
-            )
-            Text(
-                text = title,
-                fontSize = 11.sp,
-                fontWeight = FontWeight.Bold,
-                color = if (isDark) Color.White else ColorNavy,
-                lineHeight = 15.sp
+
+            Column {
+
+                Box(
+                    modifier = Modifier
+                        .size(42.dp)
+                        .clip(CircleShape)
+                        .background(
+                            if (isDark)
+                                Color(0xFF1E3A5F)
+                            else
+                                Color(0xFFE0F2FE)
+                        ),
+
+                    contentAlignment = Alignment.Center
+                ) {
+
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = null,
+
+                        tint =
+                            if (isDark)
+                                Color(0xFF38BDF8)
+                            else
+                                ColorTeal,
+
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(18.dp))
+
+                Text(
+                    text = title,
+
+                    fontSize = 15.sp,
+
+                    fontWeight = FontWeight.Bold,
+
+                    color = textColor
+                )
+
+                Spacer(modifier = Modifier.height(4.dp))
+
+                Text(
+                    text = subtitle,
+
+                    fontSize = 12.sp,
+
+                    color =
+                        if (isDark)
+                            Color.LightGray
+                        else
+                            Color.Gray
+                )
+            }
+
+            AssistChip(
+                onClick = {},
+
+                enabled = false,
+
+                label = {
+                    Text(
+                        text = "Bootcamp",
+                        fontSize = 11.sp
+                    )
+                }
             )
         }
     }

@@ -16,7 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.ricky.rinaldy.cv.features.contact.ContactScreen
 import com.ricky.rinaldy.cv.features.experience.ExperienceScreen
 import com.ricky.rinaldy.cv.features.profile.ProfileScreen
-import com.ricky.rinaldy.cv.features.splash.SplashScreen
+import com.ricky.rinaldy.cv.features.welcome.WelcomeScreen
 
 @Composable
 fun AppNavigation() {
@@ -53,19 +53,19 @@ fun AppNavigation() {
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = "splash",
+            startDestination = "welcome",
             modifier = Modifier.padding(if (shouldShowBottomBar) innerPadding else PaddingValues(0.dp))
         ) {
-            composable("splash") {
-                SplashScreen(
+            composable("welcome") {
+                WelcomeScreen(
                     onViewExperienceClick = {
                         navController.navigate(Screen.Experience.route) {
-                            popUpTo("splash") { inclusive = true }
+                            popUpTo("welcome") { inclusive = true }
                         }
                     },
                     onViewOverviewClick = {
                         navController.navigate(Screen.Profile.route) {
-                            popUpTo("splash") { inclusive = true }
+                            popUpTo("welcome") { inclusive = true }
                         }
                     }
                 )
