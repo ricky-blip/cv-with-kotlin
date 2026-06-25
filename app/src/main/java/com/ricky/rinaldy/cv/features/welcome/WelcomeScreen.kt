@@ -2,7 +2,9 @@ package com.ricky.rinaldy.cv.features.welcome
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.*
@@ -11,16 +13,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-// Warna Tema
-private val ColorNavy = Color(0xFF10172A)
-private val ColorTeal = Color(0xFF3B82F6) // Biru muda
-private val ColorTextGrey = Color(0xFF64748B)
+import com.ricky.rinaldy.cv.R
 
 @Composable
 fun WelcomeScreen(
@@ -31,14 +30,15 @@ fun WelcomeScreen(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFFF8FAFC)), // Background sangat muda
+            .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp)
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 24.dp, vertical = 32.dp)
         ) {
             // 1. Logo RR dengan Aksen Dot
             Box(contentAlignment = Alignment.Center) {
@@ -47,7 +47,7 @@ fun WelcomeScreen(
                     modifier = Modifier
                         .size(72.dp)
                         .shadow(12.dp, shape = RoundedCornerShape(16.dp))
-                        .background(ColorNavy, shape = RoundedCornerShape(16.dp)),
+                        .background(MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(16.dp)),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
@@ -63,7 +63,7 @@ fun WelcomeScreen(
                         .size(12.dp)
                         .align(Alignment.BottomEnd)
                         .offset(x = 6.dp, y = 6.dp)
-                        .background(ColorTeal, shape = RoundedCornerShape(6.dp))
+                        .background(MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(6.dp))
                 )
             }
 
@@ -71,10 +71,10 @@ fun WelcomeScreen(
 
             // 2. Subtitle
             Text(
-                text = "MOBILE ENGINEER",
+                text = stringResource(R.string.welcome_subtitle),
                 fontSize = 10.sp,
                 fontWeight = FontWeight.SemiBold,
-                color = ColorTeal,
+                color = MaterialTheme.colorScheme.secondary,
                 letterSpacing = 1.5.sp,
                 textAlign = TextAlign.Center,
                 lineHeight = 16.sp
@@ -84,32 +84,32 @@ fun WelcomeScreen(
 
             // 3. Judul Besar
             Text(
-                text = "Welcome to",
+                text = stringResource(R.string.welcome_title_1),
                 fontSize = 26.sp,
                 fontWeight = FontWeight.Bold,
-                color = ColorNavy
+                color = MaterialTheme.colorScheme.primary
             )
             Text(
-                text = "Ricky Rinaldy's",
+                text = stringResource(R.string.welcome_title_2),
                 fontSize = 26.sp,
-                fontStyle = FontStyle.Italic, // Miring sesuai gambar
-                color = Color(0xFF475569),
+                fontStyle = FontStyle.Italic,
+                color = MaterialTheme.colorScheme.tertiary,
                 modifier = Modifier.padding(vertical = 2.dp)
             )
             Text(
-                text = "Portfolio",
+                text = stringResource(R.string.welcome_title_3),
                 fontSize = 26.sp,
                 fontWeight = FontWeight.Bold,
-                color = ColorNavy
+                color = MaterialTheme.colorScheme.primary
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             // 4. Deskripsi
             Text(
-                text = "Flutter Developer with 3+ years of experience building scalable and high-performance mobile applications, especially for business operations and internal systems.",
+                text = stringResource(R.string.welcome_description),
                 fontSize = 14.sp,
-                color = ColorTextGrey,
+                color = MaterialTheme.colorScheme.tertiary,
                 lineHeight = 22.sp,
                 textAlign = TextAlign.Center
             )
@@ -122,12 +122,12 @@ fun WelcomeScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = ColorNavy),
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
                 shape = RoundedCornerShape(12.dp)
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = "View Experience",
+                        text = stringResource(R.string.btn_view_experience),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = Color.White
@@ -152,15 +152,15 @@ fun WelcomeScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),
-                colors = ButtonDefaults.outlinedButtonColors(contentColor = ColorNavy),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.primary),
                 border = ButtonDefaults.outlinedButtonBorder.copy(width = 1.5.dp),
                 shape = RoundedCornerShape(12.dp)
             ) {
                 Text(
-                    text = "View Overview",
+                    text = stringResource(R.string.btn_view_overview),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = ColorNavy
+                    color = MaterialTheme.colorScheme.primary
                 )
             }
         }

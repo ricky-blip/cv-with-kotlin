@@ -26,14 +26,11 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.FileProvider
 import androidx.core.net.toUri
 import com.ricky.rinaldy.cv.R
+import com.ricky.rinaldy.cv.core.theme.CardBg
+import com.ricky.rinaldy.cv.core.theme.TealAccent
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
-
-private val ColorNavy = Color(0xFF10172A)
-private val ColorTeal = Color(0xFF0D9488)
-private val ColorBg = Color(0xFFF8FAFC)
-private val ColorCardBg = Color(0xFFF1F5F9)
 
 @Composable
 fun ContactScreen() {
@@ -140,7 +137,7 @@ fun ContactScreen() {
                     text = "GET IN TOUCH",
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
-                    color = ColorTeal,
+                    color = TealAccent,
                     letterSpacing = 1.sp
                 )
                 Spacer(modifier = Modifier.height(12.dp))
@@ -148,14 +145,14 @@ fun ContactScreen() {
                     text = "Let's start a\nconversation.",
                     fontSize = 42.sp,
                     fontWeight = FontWeight.Bold,
-                    color = ColorNavy,
+                    color = MaterialTheme.colorScheme.primary,
                     lineHeight = 48.sp
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 Text(
                     text = "Currently open to new opportunities and interesting collaborations. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
                     fontSize = 15.sp,
-                    color = Color(0xFF64748B),
+                    color = MaterialTheme.colorScheme.tertiary,
                     lineHeight = 24.sp
                 )
 
@@ -176,7 +173,7 @@ fun ContactScreen() {
                         icon = Icons.Default.Code,
                         title = "GitHub",
                         desc = "Code",
-                        iconBgColor = ColorNavy,
+                        iconBgColor = MaterialTheme.colorScheme.primary,
                         iconTint = Color.White,
                         modifier = Modifier.weight(1f),
                         onClick = { openUrl("https://github.com/ricky-blip") }
@@ -186,8 +183,8 @@ fun ContactScreen() {
                         icon = Icons.Default.Description,
                         title = "Medium",
                         desc = "Writing",
-                        iconBgColor = Color(0xFFF1F5F9),
-                        iconTint = ColorNavy,
+                        iconBgColor = CardBg,
+                        iconTint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.weight(1f),
                         onClick = { openUrl("https://medium.com/@R2Develop") }
                     )
@@ -209,7 +206,7 @@ fun ContactScreen() {
                         title = "Email",
                         desc = "Direct",
                         iconBgColor = Color(0xFFE0F2FE),
-                        iconTint = ColorTeal,
+                        iconTint = TealAccent,
                         modifier = Modifier.weight(1f),
                         onClick = { sendEmail() }
                     )
@@ -222,7 +219,7 @@ fun ContactScreen() {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(ColorBg)
+                    .background(MaterialTheme.colorScheme.background)
                     .padding(horizontal = 16.dp)
             ) {
                 HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f))
@@ -280,7 +277,7 @@ fun ContactHeader() {
             contentScale = ContentScale.Crop
         )
         Spacer(modifier = Modifier.width(12.dp))
-        Text(text = "Ricky Rinaldy", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = ColorNavy)
+        Text(text = "Ricky Rinaldy", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = MaterialTheme.colorScheme.primary)
     }
 }
 
@@ -315,7 +312,7 @@ fun ContactCard(
             }
             Spacer(modifier = Modifier.width(12.dp))
             Column {
-                Text(text = title, fontSize = 13.sp, fontWeight = FontWeight.Bold, color = ColorNavy)
+                Text(text = title, fontSize = 13.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
                 Text(text = desc, fontSize = 10.sp, color = Color.Gray)
             }
         }
@@ -330,7 +327,7 @@ fun ContactForm(onSendMessage: (String, String) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(ColorCardBg.copy(alpha = 0.5f), RoundedCornerShape(20.dp))
+            .background(CardBg.copy(alpha = 0.5f), RoundedCornerShape(20.dp))
             .padding(24.dp)
     ) {
         FormField(
@@ -357,7 +354,7 @@ fun ContactForm(onSendMessage: (String, String) -> Unit) {
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.White,
                 contentColor = Color(0xFF38BDF8),
-                disabledContainerColor = ColorNavy.copy(alpha = 0.5f),
+                disabledContainerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
                 disabledContentColor = Color.White.copy(alpha = 0.7f)
             ),
             shape = RoundedCornerShape(12.dp)
@@ -418,20 +415,20 @@ fun ResumeDownloadCard(onDownloadClick: () -> Unit) {
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(modifier = Modifier.padding(24.dp)) {
-            Text(text = "Need the details?", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = ColorNavy)
+            Text(text = "Need the details?", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
             Spacer(modifier = Modifier.height(12.dp))
             Text(
                 text = "Download my comprehensive resume for a deep dive into my professional experience, skills, and education.",
                 fontSize = 13.sp,
-                color = Color(0xFF475569),
+                color = MaterialTheme.colorScheme.tertiary,
                 lineHeight = 20.sp
             )
             Spacer(modifier = Modifier.height(24.dp))
             TextButton(onClick = onDownloadClick, contentPadding = PaddingValues(0.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = "Download CV (PDF)", color = ColorTeal, fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    Text(text = "Download CV (PDF)", color = TealAccent, fontWeight = FontWeight.Bold, fontSize = 15.sp)
                     Spacer(modifier = Modifier.width(8.dp))
-                    Icon(Icons.Default.Download, contentDescription = null, tint = ColorTeal, modifier = Modifier.size(20.dp))
+                    Icon(Icons.Default.Download, contentDescription = null, tint = TealAccent, modifier = Modifier.size(20.dp))
                 }
             }
         }
@@ -443,7 +440,7 @@ fun LanguagesSection() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(ColorCardBg.copy(alpha = 0.5f), RoundedCornerShape(20.dp))
+            .background(CardBg.copy(alpha = 0.5f), RoundedCornerShape(20.dp))
             .padding(24.dp)
     ) {
         Text(
@@ -473,7 +470,7 @@ fun LanguageChip(label: String) {
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp),
             fontSize = 12.sp,
             fontWeight = FontWeight.Medium,
-            color = ColorNavy
+            color = MaterialTheme.colorScheme.primary
         )
     }
 }

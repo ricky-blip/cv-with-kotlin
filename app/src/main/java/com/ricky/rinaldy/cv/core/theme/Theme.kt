@@ -18,24 +18,24 @@ import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
     primary = Navy,
-    secondary = Teal,
+    secondary = BlueAccent,
     tertiary = TextGrey,
-    background = Navy,
-    surface = Navy
+    background = Color.White,
+    surface = Color.White
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = Navy,
-    secondary = Teal,
+    secondary = BlueAccent,
     tertiary = TextGrey,
-    background = BgLight,
+    background = Color.White,
     surface = Color.White
 )
 
 @Composable
 fun CVAppsTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false, // Set false for consistent brand colors
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -51,8 +51,9 @@ fun CVAppsTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.background.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+            window.statusBarColor = Color.White.toArgb()
+            // Karena background selalu putih, kita paksa ikon status bar jadi gelap (appearanceLightStatusBars = true)
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = true
         }
     }
 

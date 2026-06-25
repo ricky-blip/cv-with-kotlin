@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">Ricky Rinaldy Port</string>
+    <string name="app_name">Ricky Rinaldy Portfolio</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_subtitle">MOBILE ENGINEER</string>
+    <string name="welcome_title_1">Welcome to</string>
+    <string name="welcome_title_2">Ricky Rinaldy\'s</string>
+    <string name="welcome_title_3">Portfolio</string>
+    <string name="welcome_description">Flutter Developer with 3+ years of experience building scalable and high-performance mobile applications, especially for business operations and internal systems.</string>
+    <string name="btn_view_experience">View Experience</string>
+    <string name="btn_view_overview">View Overview</string>
+
+    <!-- Experience Screen -->
+    <string name="experience_title">Experience.</string>
+    <string name="experience_summary">Building scalable, high-performance mobile applications and business systems with a focus on modern development practices.</string>
+    <string name="academic_foundation">ACADEMIC FOUNDATION</string>
+    <string name="professional_accreditation">Professional Accreditation</string>
 </resources>

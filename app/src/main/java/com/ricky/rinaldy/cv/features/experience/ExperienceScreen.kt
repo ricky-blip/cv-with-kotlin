@@ -24,10 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ricky.rinaldy.cv.R
-
-private val ColorNavy = Color(0xFF10172A)
-private val ColorTeal = Color(0xFF0D9488)
-private val ColorBg = Color(0xFFF8FAFC)
+import com.ricky.rinaldy.cv.core.theme.TealAccent
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -35,7 +32,7 @@ fun ExperienceScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(ColorBg)
+            .background(MaterialTheme.colorScheme.background)
             .verticalScroll(rememberScrollState())
     ) {
         ExperienceHeader()
@@ -47,12 +44,12 @@ fun ExperienceScreen() {
                 text = "Experience.",
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold,
-                color = ColorNavy
+                color = MaterialTheme.colorScheme.primary
             )
             Text(
                 text = "Building scalable, high-performance mobile applications and business systems with a focus on modern development practices.",
                 fontSize = 14.sp,
-                color = Color(0xFF64748B),
+                color = MaterialTheme.colorScheme.tertiary,
                 lineHeight = 22.sp
             )
 
@@ -125,8 +122,8 @@ fun ExperienceScreen() {
             Spacer(modifier = Modifier.height(48.dp))
 
             // --- EDUCATION ---
-            Text(text = "Education", fontSize = 28.sp, fontWeight = FontWeight.Bold, color = ColorNavy)
-            Text(text = "ACADEMIC FOUNDATION", fontSize = 10.sp, fontWeight = FontWeight.Bold, color = ColorTeal)
+            Text(text = "Education", fontSize = 28.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+            Text(text = "ACADEMIC FOUNDATION", fontSize = 10.sp, fontWeight = FontWeight.Bold, color = TealAccent)
             
             Spacer(modifier = Modifier.height(24.dp))
             
@@ -145,7 +142,7 @@ fun ExperienceScreen() {
                 text = "Professional Accreditation",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                color = ColorNavy
+                color = MaterialTheme.colorScheme.primary
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -205,7 +202,7 @@ fun ExperienceHeader() {
             contentScale = ContentScale.Crop
         )
         Spacer(modifier = Modifier.width(12.dp))
-        Text(text = "Ricky Rinaldy", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = ColorNavy)
+        Text(text = "Ricky Rinaldy", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = MaterialTheme.colorScheme.primary)
     }
 }
 
@@ -226,10 +223,10 @@ fun DetailedExperienceItem(
     techStack: List<String> = emptyList()
 ) {
     Column {
-        Text(text = period, fontSize = 12.sp, fontWeight = FontWeight.Bold, color = ColorTeal)
-        Text(text = role, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = ColorNavy, lineHeight = 30.sp)
+        Text(text = period, fontSize = 12.sp, fontWeight = FontWeight.Bold, color = TealAccent)
+        Text(text = role, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary, lineHeight = 30.sp)
         if (company.isNotEmpty()) {
-            Text(text = company, fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = Color(0xFF475569))
+            Text(text = company, fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.tertiary)
         }
         if (location != null) {
             Text(text = location, fontSize = 12.sp, color = Color.Gray)
@@ -239,7 +236,7 @@ fun DetailedExperienceItem(
             Spacer(modifier = Modifier.height(8.dp))
             subRoles.forEach { subRole ->
                 Column(modifier = Modifier.padding(vertical = 4.dp)) {
-                    Text(text = subRole.title, fontSize = 14.sp, fontWeight = FontWeight.Bold, color = ColorNavy)
+                    Text(text = subRole.title, fontSize = 14.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
                     Text(text = subRole.period, fontSize = 12.sp, color = Color.Gray)
                 }
             }
@@ -258,7 +255,7 @@ fun DetailedExperienceItem(
                     Text(
                         text = summary,
                         fontSize = 14.sp,
-                        color = Color(0xFF64748B),
+                        color = MaterialTheme.colorScheme.tertiary,
                         lineHeight = 22.sp
                     )
                     Spacer(modifier = Modifier.height(16.dp))
@@ -269,7 +266,7 @@ fun DetailedExperienceItem(
                         text = projectsTitle ?: "Key Projects:",
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
-                        color = ColorNavy
+                        color = MaterialTheme.colorScheme.primary
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                     projects.forEach { project ->
@@ -286,7 +283,7 @@ fun DetailedExperienceItem(
                                     Text(
                                         text = project.title + ": " + project.desc,
                                         fontSize = 13.sp,
-                                        color = Color(0xFF64748B),
+                                        color = MaterialTheme.colorScheme.tertiary,
                                         lineHeight = 18.sp
                                     )
                                 }
@@ -331,14 +328,14 @@ fun EducationItem(major: String, school: String, period: String, location: Strin
                 .background(Color(0xFFE0F2FE), RoundedCornerShape(8.dp)),
             contentAlignment = Alignment.Center
         ) {
-            Icon(Icons.Default.School, contentDescription = null, tint = ColorTeal, modifier = Modifier.size(24.dp))
+            Icon(Icons.Default.School, contentDescription = null, tint = TealAccent, modifier = Modifier.size(24.dp))
         }
         Spacer(modifier = Modifier.width(16.dp))
         Column {
             Text(text = "ASSOCIATE'S DEGREE".uppercase(), fontSize = 10.sp, fontWeight = FontWeight.Bold, color = Color.Gray)
-            Text(text = major, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = ColorNavy)
+            Text(text = major, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
             Spacer(modifier = Modifier.height(4.dp))
-            Text(text = school, fontSize = 14.sp, color = Color(0xFF475569))
+            Text(text = school, fontSize = 14.sp, color = MaterialTheme.colorScheme.tertiary)
             Text(text = "$location • $period", fontSize = 12.sp, color = Color.Gray)
         }
     }
@@ -352,9 +349,9 @@ fun AccreditationItem(
     isDark: Boolean
 ) {
 
-    val background = if (isDark) ColorNavy else Color.White
+    val background = if (isDark) MaterialTheme.colorScheme.primary else Color.White
 
-    val textColor = if (isDark) Color.White else ColorNavy
+    val textColor = if (isDark) Color.White else MaterialTheme.colorScheme.primary
 
     Card(
         modifier = Modifier
@@ -404,7 +401,7 @@ fun AccreditationItem(
                             if (isDark)
                                 Color(0xFF38BDF8)
                             else
-                                ColorTeal,
+                                TealAccent,
 
                         modifier = Modifier.size(22.dp)
                     )

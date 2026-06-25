@@ -30,14 +30,11 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.FileProvider
 import androidx.core.net.toUri
 import com.ricky.rinaldy.cv.R
+import com.ricky.rinaldy.cv.core.theme.CardBg
+import com.ricky.rinaldy.cv.core.theme.TealAccent
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
-
-private val ColorNavy = Color(0xFF10172A)
-private val ColorTeal = Color(0xFF0D9488)
-private val ColorBg = Color(0xFFF8FAFC)
-private val ColorCardBg = Color(0xFFF1F5F9)
 
 @Composable
 fun ProfileScreen() {
@@ -116,7 +113,7 @@ fun ProfileScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .background(ColorBg)
+                .background(MaterialTheme.colorScheme.background)
                 .verticalScroll(rememberScrollState())
         ) {
             ProfileHeader()
@@ -150,7 +147,7 @@ fun ProfileHeader() {
             text = "Ricky Rinaldy",
             fontWeight = FontWeight.Bold,
             fontSize = 18.sp,
-            color = ColorNavy
+            color = MaterialTheme.colorScheme.primary
         )
     }
 }
@@ -162,12 +159,12 @@ fun ProfileContent(onDownloadCV: () -> Unit, onViewProjects: () -> Unit) {
             Surface(
                 color = Color.Transparent,
                 shape = RoundedCornerShape(4.dp),
-                border = BorderStroke(1.dp, ColorTeal.copy(alpha = 0.3f))
+                border = BorderStroke(1.dp, TealAccent.copy(alpha = 0.3f))
             ) {
                 Text(
                     text = "AVAILABLE FOR PROJECTS",
                     fontSize = 10.sp,
-                    color = ColorTeal,
+                    color = TealAccent,
                     modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
                     fontWeight = FontWeight.Bold
                 )
@@ -186,7 +183,7 @@ fun ProfileContent(onDownloadCV: () -> Unit, onViewProjects: () -> Unit) {
             text = "Mobile Engineer (3+ YOE) | ERP, Sales & Business Automation",
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
-            color = ColorNavy,
+            color = MaterialTheme.colorScheme.primary,
             lineHeight = 34.sp
         )
 
@@ -195,7 +192,7 @@ fun ProfileContent(onDownloadCV: () -> Unit, onViewProjects: () -> Unit) {
         Text(
             text = "Improving App Performance & Business Workflows (ERP, Sales Order, Automation)",
             fontSize = 16.sp,
-            color = Color(0xFF475569),
+            color = MaterialTheme.colorScheme.tertiary,
             lineHeight = 24.sp
         )
 
@@ -212,7 +209,7 @@ fun ProfileContent(onDownloadCV: () -> Unit, onViewProjects: () -> Unit) {
                     .weight(1.1f)
                     .height(56.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = ColorNavy
+                    containerColor = MaterialTheme.colorScheme.primary
                 ),
                 shape = RoundedCornerShape(12.dp)
             ) {
@@ -241,14 +238,14 @@ fun ProfileContent(onDownloadCV: () -> Unit, onViewProjects: () -> Unit) {
                     .weight(1.1f)
                     .height(56.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = ColorCardBg
+                    containerColor = CardBg
                 ),
                 shape = RoundedCornerShape(12.dp)
             ) {
                 Icon(
                     Icons.Default.Download,
                     contentDescription = null,
-                    tint = ColorNavy,
+                    tint = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.size(18.dp)
                 )
 
@@ -256,7 +253,7 @@ fun ProfileContent(onDownloadCV: () -> Unit, onViewProjects: () -> Unit) {
 
                 Text(
                     "Download CV",
-                    color = ColorNavy,
+                    color = MaterialTheme.colorScheme.primary,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -306,13 +303,13 @@ fun AboutSection() {
                 text = "About",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                color = ColorNavy
+                color = MaterialTheme.colorScheme.primary
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "I'm a Mobile Engineer with over 3 years of experience. Over the years, I've built mobile apps that actually make business operations smoother—mostly focusing on ERP, sales Order management, and Business Automation.\n\nIt's never just about writing code. It's about figuring out how that code solves real bottlenecks for the company.\n\nI specialize in:",
                 fontSize = 14.sp,
-                color = Color(0xFF64748B),
+                color = MaterialTheme.colorScheme.tertiary,
                 lineHeight = 22.sp
             )
             Spacer(modifier = Modifier.height(12.dp))
@@ -324,16 +321,16 @@ fun AboutSection() {
             )
             list.forEach { (bold, normal) ->
                 Row(modifier = Modifier.padding(vertical = 4.dp)) {
-                    Text("• ", color = ColorNavy, fontWeight = FontWeight.Bold)
+                    Text("• ", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
                     Text(
                         text = buildAnnotatedString {
-                            withStyle(SpanStyle(fontWeight = FontWeight.Bold, color = ColorNavy)) {
+                            withStyle(SpanStyle(fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)) {
                                 append(bold)
                             }
                             append(normal)
                         },
                         fontSize = 14.sp,
-                        color = Color(0xFF64748B),
+                        color = MaterialTheme.colorScheme.tertiary,
                         lineHeight = 20.sp
                     )
                 }
@@ -342,7 +339,7 @@ fun AboutSection() {
             Text(
                 text = "My daily drivers: Flutter, Dart, REST APIs, and Firebase. I'm also developing with Spring Boot and Full-Stack JavaScript.\n\nOpen to opportunities (Remote / Hybrid / Onsite).",
                 fontSize = 14.sp,
-                color = Color(0xFF64748B),
+                color = MaterialTheme.colorScheme.tertiary,
                 lineHeight = 22.sp
             )
         }
@@ -352,7 +349,7 @@ fun AboutSection() {
 @Composable
 fun YOECard() {
     Card(
-        colors = CardDefaults.cardColors(containerColor = ColorCardBg),
+        colors = CardDefaults.cardColors(containerColor = CardBg),
         shape = RoundedCornerShape(16.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -362,7 +359,7 @@ fun YOECard() {
                     text = "3+ YOE",
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold,
-                    color = ColorNavy
+                    color = MaterialTheme.colorScheme.primary
                 )
                 Text(
                     text = "EXPERTISE IN MOBILE DEVELOPER",
@@ -379,7 +376,7 @@ fun YOECard() {
 @Composable
 fun ExpertiseSection() {
     Column {
-        Text(text = "Expertise", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = ColorNavy)
+        Text(text = "Expertise", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
         Spacer(modifier = Modifier.height(16.dp))
         Row(modifier = Modifier.fillMaxWidth()) {
             ExpertiseItem(
@@ -420,14 +417,14 @@ fun ExpertiseSection() {
 @Composable
 fun ExpertiseItem(icon: ImageVector, title: String, modifier: Modifier = Modifier) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = ColorCardBg),
+        colors = CardDefaults.cardColors(containerColor = CardBg),
         shape = RoundedCornerShape(12.dp),
         modifier = modifier
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Icon(icon, contentDescription = null, tint = ColorTeal, modifier = Modifier.size(24.dp))
+            Icon(icon, contentDescription = null, tint = TealAccent, modifier = Modifier.size(24.dp))
             Spacer(modifier = Modifier.height(12.dp))
-            Text(text = title, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = ColorNavy)
+            Text(text = title, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.primary)
         }
     }
 }
@@ -455,7 +452,7 @@ fun TechStackSection() {
             text = "Tech Stack",
             fontSize = 22.sp,
             fontWeight = FontWeight.Bold,
-            color = ColorNavy
+            color = MaterialTheme.colorScheme.primary
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -470,7 +467,7 @@ fun TechStackSection() {
 
                 Surface(
                     shape = RoundedCornerShape(14.dp),
-                    color = Color(0xFFF8FAFC),
+                    color = MaterialTheme.colorScheme.background,
                     border = BorderStroke(
                         1.dp,
                         Color(0xFFE2E8F0)
@@ -486,7 +483,7 @@ fun TechStackSection() {
                         ),
                         fontSize = 13.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = ColorNavy
+                        color = MaterialTheme.colorScheme.primary
                     )
                 }
             }
@@ -501,14 +498,14 @@ fun ExperienceSection() {
             text = "Experience.",
             fontSize = 42.sp,
             fontWeight = FontWeight.Bold,
-            color = ColorNavy,
+            color = MaterialTheme.colorScheme.primary,
             letterSpacing = (-1).sp
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = "Building scalable, high-performance mobile applications and business systems with a focus on modern development practices.",
             fontSize = 16.sp,
-            color = Color(0xFF64748B),
+            color = MaterialTheme.colorScheme.tertiary,
             lineHeight = 24.sp
         )
 
@@ -596,7 +593,7 @@ fun ExperienceItem(
             text = date,
             fontSize = 11.sp,
             fontWeight = FontWeight.Bold,
-            color = ColorTeal,
+            color = TealAccent,
             letterSpacing = 0.5.sp
         )
         Spacer(modifier = Modifier.height(8.dp))
@@ -604,7 +601,7 @@ fun ExperienceItem(
             text = title,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
-            color = ColorNavy,
+            color = MaterialTheme.colorScheme.primary,
             lineHeight = 30.sp
         )
 
@@ -612,7 +609,7 @@ fun ExperienceItem(
             Text(
                 text = company,
                 fontSize = 16.sp,
-                color = ColorNavy.copy(alpha = 0.7f),
+                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f),
                 fontWeight = FontWeight.Medium
             )
         }
@@ -631,7 +628,7 @@ fun ExperienceItem(
                 text = role,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
-                color = ColorNavy
+                color = MaterialTheme.colorScheme.primary
             )
             Text(
                 text = duration,
@@ -654,7 +651,7 @@ fun ExperienceItem(
                     Text(
                         text = summary,
                         fontSize = 14.sp,
-                        color = Color(0xFF475569),
+                        color = MaterialTheme.colorScheme.tertiary,
                         lineHeight = 22.sp
                     )
                 }
@@ -665,7 +662,7 @@ fun ExperienceItem(
                         text = achievementsTitle,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
-                        color = ColorNavy
+                        color = MaterialTheme.colorScheme.primary
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                 }
@@ -684,7 +681,7 @@ fun ExperienceItem(
                         Text(
                             text = achievement,
                             fontSize = 13.sp,
-                            color = Color(0xFF475569),
+                            color = MaterialTheme.colorScheme.tertiary,
                             lineHeight = 20.sp
                         )
                     }
@@ -698,7 +695,7 @@ fun ExperienceItem(
                     ) {
                         tags.forEach { tag ->
                             Surface(
-                                color = Color(0xFFF1F5F9),
+                                color = CardBg,
                                 shape = RoundedCornerShape(6.dp),
                                 border = BorderStroke(1.dp, Color(0xFFE2E8F0))
                             ) {
@@ -707,7 +704,7 @@ fun ExperienceItem(
                                     modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
                                     fontSize = 10.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color = ColorTeal
+                                    color = TealAccent
                                 )
                             }
                         }
@@ -725,12 +722,12 @@ fun EducationSection() {
             text = "Education",
             fontSize = 32.sp,
             fontWeight = FontWeight.Bold,
-            color = ColorNavy
+            color = MaterialTheme.colorScheme.primary
         )
         Text(
             text = "Academic Foundation",
             fontSize = 14.sp,
-            color = ColorTeal,
+            color = TealAccent,
             fontWeight = FontWeight.Medium
         )
 
@@ -744,13 +741,13 @@ fun EducationSection() {
         ) {
             Surface(
                 modifier = Modifier.size(56.dp),
-                color = Color(0xFFF1F5F9),
+                color = CardBg,
                 shape = RoundedCornerShape(16.dp)
             ) {
                 Icon(
                     Icons.Default.School,
                     contentDescription = null,
-                    tint = ColorTeal,
+                    tint = TealAccent,
                     modifier = Modifier.padding(14.dp)
                 )
             }
@@ -767,7 +764,7 @@ fun EducationSection() {
                     text = "Computer Science",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    color = ColorNavy
+                    color = MaterialTheme.colorScheme.primary
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
@@ -792,7 +789,7 @@ fun AccreditationSection() {
             text = "Professional Accreditation",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
-            color = ColorNavy
+            color = MaterialTheme.colorScheme.primary
         )
 
         Spacer(modifier = Modifier.height(32.dp))
@@ -834,7 +831,7 @@ fun AccreditationItem(
 ) {
     Card(
         colors = CardDefaults.cardColors(
-            containerColor = if (isDark) ColorNavy else Color(0xFFF1F5F9)
+            containerColor = if (isDark) MaterialTheme.colorScheme.primary else CardBg
         ),
         shape = RoundedCornerShape(16.dp),
         modifier = modifier.height(160.dp)
@@ -848,14 +845,14 @@ fun AccreditationItem(
             Icon(
                 icon,
                 contentDescription = null,
-                tint = if (isDark) Color.White else ColorTeal,
+                tint = if (isDark) Color.White else TealAccent,
                 modifier = Modifier.size(28.dp)
             )
             Text(
                 text = title,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold,
-                color = if (isDark) Color.White else ColorNavy,
+                color = if (isDark) Color.White else MaterialTheme.colorScheme.primary,
                 lineHeight = 22.sp
             )
         }
